@@ -1,48 +1,51 @@
 def get_number(prompt):
     while True:
         try:
-         number = float(input(prompt))
-         if number.is_integer():
-          return int(number)
-         return number
+            number = float(input(prompt))
+            if number.is_integer():
+                return int(number)
+            return number
         except ValueError:
-         print("Это не число!")
+            print("Это не число!")
+
 
 def get_operation():
- message = '''
- Выберите математическую операцию:
+    message = '''
+    Выберите математическую операцию:
 
- + : Сложение
- - : Вычитание
- / : Деление
- * : Умножение
- Ваш выбор:
- '''
- correct_operations = '+-/*'
- operation = input(message)
- while operation not in correct_operations:
-    print('Такая операция недоступна, повторите попытку.')
+    + : Сложение
+    - : Вычитание
+    / : Деление
+    * : Умножение
+    Ваш выбор:
+    '''
+    correct_operations = '+-/*'
     operation = input(message)
- return operation
+    while operation not in correct_operations:
+        print('Такая операция недоступна, повторите попытку.')
+        operation = input(message)
+    return operation
+
 
 def calculate(num_1, num_2, operation):
     result = None
     if operation == '+':
-     result = num_1 + num_2
+        result = num_1 + num_2
 
     elif operation == '-':
-     result = num_1 - num_2
+        result = num_1 - num_2
 
     elif operation == '/':
-     try:
-      result = num_1 / num_2
-     except ZeroDivisionError:
-      result = "Нельзя делить на ноль!"
+        try:
+            result = num_1 / num_2
+        except ZeroDivisionError:
+            result = "Нельзя делить на ноль!"
 
     elif operation == '*':
-     result = num_1 * num_2
-        
+        result = num_1 * num_2
+
     return result
+
 
 def main():
     num_1 = get_number("Введите первое число: ")
@@ -50,6 +53,7 @@ def main():
     operation = get_operation()
     result = calculate(num_1, num_2, operation)
     print("Результат: ", result)
+
 
 main()
 while True:
